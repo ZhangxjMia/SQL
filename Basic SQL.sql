@@ -195,10 +195,6 @@ WHERE first_name LIKE '_er%'
 
 
 
-#---------------------------------------------------------------------------------------------------
-
-
-
 /*
 MIN/MAX/AVG/SUM
 */
@@ -400,16 +396,15 @@ ORDER BY title
 JOIN Challenge Tasks
 */
 
-#•	What are the emails of the customers who live in California?
+#• What are the emails of the customers who live in California?
 SELECT address.distrcit, customer.email
 FROM address
 INNER JOIN customer
 ON address.address_id = customer.address_id
 WHERE address.district = ‘California’
 
- 
 
-#•	Get a list of all the movies “Nick Wahlberg” (an actor) has been in.
+#• Get a list of all the movies “Nick Wahlberg” (an actor) has been in.
 SELECT title, first_name, last_name
 FROM film_actor
 INNER JOIN  actor
