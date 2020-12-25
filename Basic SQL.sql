@@ -35,20 +35,22 @@ Syntax:
 SELECT column_1, column_2 … column_n FROM table_name
 WHERE conditions
 
-#Operators:
-#Equal (=), greater than (>), less than (<), greater than or equal (>=), less than or equal (<=), not equal (<> /! =), AND, OR
+/* 
+Operators:
+Equal (=), greater than (>), less than (<), greater than or equal (>=), less than or equal (<=), not equal (<> /! =), AND, OR
+*/
 
-#- If you want to get all customers whose first names are Jamie, you can use the WHERE with the equal (=) operator as follows:
+- If you want to get all customers whose first names are Jamie, you can use the WHERE with the equal (=) operator as follows:
 
 SELECT last_name, first_name FROM customer
 WHERE first_name = ‘Jamie’
 
-#- If you want to select the customer whose first name is Jamie and the last names is Rice, you can use the AND logical operator that combines two conditions as the following query:
+- If you want to select the customer whose first name is Jamie and the last names is Rice, you can use the AND logical operator that combines two conditions as the following query:
 
 SELECT last_name, first_name FROM customer
 WHERE first_name = ‘Jamie’ AND last_name = ‘Rice’
 
-#- If you want to know who paid the rental with amount is either less than $1 or greater than $8, you can use the following query with OR operator:
+- If you want to know who paid the rental with amount is either less than $1 or greater than $8, you can use the following query with OR operator:
 
 SELECT customer_id, amount, payment_date FROM payment
 WHERE amount <= 1 OR amount >= 8
