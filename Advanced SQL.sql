@@ -1,20 +1,20 @@
 /*
 Overview:
-•	Timestamps and EXTRACT
-•	Math Functions
-•	String Functions
-•	Sub-query
-•	Self-Join
+• Timestamps and EXTRACT
+• Math Functions
+• String Functions
+• Sub-query
+• Self-Join
 */
 
 
 
 /*
 Timestamps and EXTRACT (Part 1): Displaying current time information
-•	TIME – Contains only time
-•	DATE – Contains only date
-•	TIMESTAMP – Contains date and time
-•	TIMESTAMPTZ – Contains date, time, and time zone
+• TIME – Contains only time
+• DATE – Contains only date
+• TIMESTAMP – Contains date and time
+• TIMESTAMPTZ – Contains date, time, and time zone
 
 Query:
 SHOW ALL
@@ -29,18 +29,18 @@ SELECT CURRENT_DATE # date
 
 /*
 Timestamps and EXTRACT (Part 2): Extracting time and date information
-•	EXTRACT ()
-o	YEAR 
-	SELECT EXTRACT (YEAR FROM date_col) FROM Table
-o	MONTH
-o	DAY
-o	WEEK
-o	QUARTER
-•	AGE (): calculates and returns the current age
-o	SELECT AGE (date_col) FROM Table => 13 years 1 mon 5 days 01:34:13
-•	TO_CHAR (): general function to convert date types to text, useful for timestamp formatting, also can convert integer to string
-o	SELECT TO_CHAR (date_col, ‘mm-dd-yyyy’) FROM Table
-o	https://www.postgresql.org/docs/12/functions-formatting.html
+• EXTRACT ()
+  o YEAR 
+    * SELECT EXTRACT (YEAR FROM date_col) FROM Table
+  o MONTH
+  o DAY
+  o WEEK
+  o QUARTER
+• AGE (): calculates and returns the current age
+  o SELECT AGE (date_col) FROM Table => 13 years 1 mon 5 days 01:34:13
+• TO_CHAR (): general function to convert date types to text, useful for timestamp formatting, also can convert integer to string
+  o SELECT TO_CHAR (date_col, ‘mm-dd-yyyy’) FROM Table
+  o https://www.postgresql.org/docs/12/functions-formatting.html
 */
 
 
@@ -183,23 +183,24 @@ AND f1.length = f2.length
 Assessment Test 2
 */
 
-#1.How can you retrieve all the information from the cd.facilities table?
+/* 1.How can you retrieve all the information from the cd.facilities table? */
 
 SELECT * FROM cd.facilities
  
 
-#2.You want to print out a list of all of the facilities and their cost to members. How would you retrieve a list of only facility names and costs?
+/* 2.You want to print out a list of all of the facilities and their cost to members. How would you retrieve a list of only facility names and costs? */
 
 SELECT facilities.name, membercost FROM cd.facilities
  
 
-#3.How can you produce a list of facilities that charge a fee to members?
+/* 3.How can you produce a list of facilities that charge a fee to members? */
 
 SELECT * FROM cd.facilities
 WHERE membercost > 0
  
 
-#4.How can you produce a list of facilities that charge a fee to members, and that fee is less than 1/50th of the monthly maintenance cost? Return the facid, facility name, member cost, and monthly maintenance of the facilities in question.
+/* 4.How can you produce a list of facilities that charge a fee to members, and that fee is less than 1/50th of the monthly maintenance cost? 
+Return the facid, facility name, member cost, and monthly maintenance of the facilities in question. */
 
 SELECT facid, facilities.name, membercost, monthlymaintenance
 FROM cd.facilities
@@ -207,34 +208,34 @@ WHERE membercost > 0
 AND membercost < monthlymaintenance * 1/50.0
  
 
-#5.How can you produce a list of all facilities with the word 'Tennis' in their name?
+/* 5.How can you produce a list of all facilities with the word 'Tennis' in their name? */
 
 SELECT * FROM cd.facilities
 WHERE facilities.name LIKE '%Tennis%' (ILIKE: ignore case)
 
-#%: in a pattern matches any sequence of zero or more characters
-#_: in a pattern matches any single character
+%: in a pattern matches any sequence of zero or more characters
+_: in a pattern matches any single character
  
 
-#6.How can you retrieve the details of facilities with ID 1 and 5? Try to do it without using the OR operator.
+/* 6.How can you retrieve the details of facilities with ID 1 and 5? Try to do it without using the OR operator. */
 
 SELECT * FROM cd.facilities
 WHERE facid IN (1,5)
  
 
-#7.How can you produce a list of members who joined after the start of September 2012? Return the memid, surname, firstname, and joindate of the members in question.
+/* 7.How can you produce a list of members who joined after the start of September 2012? Return the memid, surname, firstname, and joindate of the members in question. */
 
 SELECT memid, surname, firstname, joindate 
 FROM cd.members
 WHERE joindate > '2012-08-31'
  
 
-#8.How can you produce an ordered list of the first 10 surnames in the members table? The list must not contain duplicates.
+/* 8.How can you produce an ordered list of the first 10 surnames in the members table? The list must not contain duplicates. */
 
 SELECT DISTINCT surname FROM cd.members
 ORDER BY surname LIMIT 10
  
-#9.You'd like to get the signup date of your last member. How can you retrieve this information? (Hint: the maximum date)
+/* 9.You'd like to get the signup date of your last member. How can you retrieve this information? (Hint: the maximum date) */
 
 SELECT MAX (joindate) FROM cd.members
  
