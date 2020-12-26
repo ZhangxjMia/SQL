@@ -238,4 +238,3 @@ ORDER BY surname LIMIT 10
 /* 9.You'd like to get the signup date of your last member. How can you retrieve this information? (Hint: the maximum date) */
 
 SELECT MAX (joindate) FROM cd.members
- 
