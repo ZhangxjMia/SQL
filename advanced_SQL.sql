@@ -50,7 +50,6 @@ Timestamps and Extract Challenge Tasks
 */
 
 #1.During which months did payments occur? Format your answer to return back the full month name.
-
 My answer: 
 SELECT DISTINCT EXTRACT (MONTH FROM payment_date)
 FROM payment
@@ -213,9 +212,10 @@ AND membercost < monthlymaintenance * 1/50.0
 SELECT * FROM cd.facilities
 WHERE facilities.name LIKE '%Tennis%' (ILIKE: ignore case)
 
+/*
 %: in a pattern matches any sequence of zero or more characters
 _: in a pattern matches any single character
- 
+*/
 
 /* 6.How can you retrieve the details of facilities with ID 1 and 5? Try to do it without using the OR operator. */
 
