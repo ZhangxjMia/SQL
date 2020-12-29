@@ -1,3 +1,4 @@
+Basic SQL
 /* 
 SELECT FROM
 - Query data from all columns, can use an asterisk (*) as the shorthand for all columns.
