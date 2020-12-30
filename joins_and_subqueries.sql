@@ -7,7 +7,22 @@ FROM cd.members mbs
 JOIN cd.members mbs2
 ON mbs.memid = mbs2.recommendedby
 ORDER BY surname, firstname;
-
+/*
+firstname	surname
+Florence	Bader
+Timothy	        Baker
+Gerald	        Butters
+Jemima	        Farrell
+Matthew	        Genting
+David	        Jones
+Janice	        Joplette
+Millicent	Purview
+Tim	        Rownam
+Darren	        Smith
+Tracy	        Smith
+Ponder	        Stibbons
+Burton	        Tracy
+*/
 
 
 /*
@@ -19,7 +34,40 @@ FROM cd.members mbs
 LEFT OUTER JOIN cd.members ref
 ON mbs.recommendedby = ref.memid
 ORDER BY mbs.surname, mbs.firstname;
-
+/*
+memfname	memsname	recfname	recsname
+Florence	Bader	        Ponder	        Stibbons
+Anne	Baker	Ponder	Stibbons
+Timothy	Baker	Jemima	Farrell
+Tim	Boothe	Tim	Rownam
+Gerald	Butters	Darren	Smith
+Joan	Coplin	Timothy	Baker
+Erica	Crumpet	Tracy	Smith
+Nancy	Dare	Janice	Joplette
+David	Farrell		
+Jemima	Farrell		
+GUEST	GUEST		
+Matthew	Genting	Gerald	Butters
+John	Hunt	Millicent	Purview
+David	Jones	Janice	Joplette
+Douglas	Jones	David	Jones
+Janice	Joplette	Darren	Smith
+Anna	Mackenzie	Darren	Smith
+Charles	Owen	Darren	Smith
+David	Pinker	Jemima	Farrell
+Millicent	Purview	Tracy	Smith
+Tim	Rownam		
+Henrietta	Rumney	Matthew	Genting
+Ramnaresh	Sarwin	Florence	Bader
+Darren	Smith		
+Darren	Smith		
+Jack	Smith	Darren	Smith
+Tracy	Smith		
+Ponder	Stibbons	Burton	Tracy
+Burton	Tracy		
+Hyacinth	Tupperware		
+Henry	Worthington-Smyth	Tracy	Smith
+*/
 
 
 /*
