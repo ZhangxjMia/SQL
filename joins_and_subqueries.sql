@@ -37,36 +37,36 @@ ORDER BY mbs.surname, mbs.firstname;
 /*
 memfname	memsname	recfname	recsname
 Florence	Bader	        Ponder	        Stibbons
-Anne	Baker	Ponder	Stibbons
-Timothy	Baker	Jemima	Farrell
-Tim	Boothe	Tim	Rownam
-Gerald	Butters	Darren	Smith
-Joan	Coplin	Timothy	Baker
-Erica	Crumpet	Tracy	Smith
-Nancy	Dare	Janice	Joplette
-David	Farrell		
-Jemima	Farrell		
-GUEST	GUEST		
-Matthew	Genting	Gerald	Butters
-John	Hunt	Millicent	Purview
-David	Jones	Janice	Joplette
-Douglas	Jones	David	Jones
-Janice	Joplette	Darren	Smith
-Anna	Mackenzie	Darren	Smith
-Charles	Owen	Darren	Smith
-David	Pinker	Jemima	Farrell
-Millicent	Purview	Tracy	Smith
-Tim	Rownam		
-Henrietta	Rumney	Matthew	Genting
-Ramnaresh	Sarwin	Florence	Bader
-Darren	Smith		
-Darren	Smith		
-Jack	Smith	Darren	Smith
-Tracy	Smith		
-Ponder	Stibbons	Burton	Tracy
-Burton	Tracy		
+Anne	        Baker	        Ponder	        Stibbons
+Timothy	        Baker	        Jemima	        Farrell
+Tim	        Boothe	        Tim	        Rownam
+Gerald	        Butters	        Darren	        Smith
+Joan	        Coplin	        Timothy	        Baker
+Erica	        Crumpet	        Tracy	        Smith
+Nancy	        Dare	        Janice	        Joplette
+David	        Farrell		
+Jemima	        Farrell		
+GUEST	        GUEST		
+Matthew	        Genting	        Gerald	        Butters
+John	        Hunt	        Millicent	Purview
+David	        Jones	        Janice	        Joplette
+Douglas	        Jones	        David	        Jones
+Janice	        Joplette	Darren	        Smith
+Anna	        Mackenzie	Darren	        Smith
+Charles	        Owen	        Darren	        Smith
+David	        Pinker	        Jemima	        Farrell
+Millicent	Purview	        Tracy	        Smith
+Tim	        Rownam		
+Henrietta	Rumney	        Matthew	        Genting
+Ramnaresh	Sarwin	        Florence	Bader
+Darren	        Smith		
+Darren	        Smith		
+Jack	        Smith	        Darren	        Smith
+Tracy	        Smith		
+Ponder	        Stibbons	Burton	        Tracy
+Burton	        Tracy		
 Hyacinth	Tupperware		
-Henry	Worthington-Smyth	Tracy	Smith
+Henry	     Worthington-Smyth  Tracy	        Smith
 */
 
 
@@ -110,6 +110,29 @@ FROM
 	  AND bks.starttime < '2012-09-15') AS bookings
 WHERE cost > 30
 ORDER BY cost DESC;
+/*
+member	        facility	cost
+GUEST GUEST	Massage Room 2	320
+GUEST GUEST	Massage Room 1	160
+GUEST GUEST	Massage Room 1	160
+GUEST GUEST	Massage Room 1	160
+GUEST GUEST	Tennis Court 2	150
+Jemima Farrell	Massage Room 1	140
+GUEST GUEST	Tennis Court 1	75
+GUEST GUEST	Tennis Court 2	75
+GUEST GUEST	Tennis Court 1	75
+Matthew Genting	Massage Room 1	70
+Florence Bader	Massage Room 2	70
+GUEST GUEST	Squash Court	70.0
+Jemima Farrell	Massage Room 1	70
+Ponder Stibbons	Massage Room 1	70
+Burton Tracy	Massage Room 1	70
+Jack Smith	Massage Room 1	70
+GUEST GUEST	Squash Court	35.0
+GUEST GUEST	Squash Court	35.0
+*/
+
+
 
 /*
 Produce a list of all members, along with their recommender, using no joins.
@@ -122,3 +145,36 @@ SELECT DISTINCT CONCAT(mbs.firstname, ' ', mbs.surname) AS member,
 	   WHERE rec.memid = mbs.recommendedby)
 FROM cd.members mbs
 ORDER BY member;
+/*
+member	 		recommender
+Anna Mackenzie		Darren Smith
+Anne Baker		Ponder Stibbons
+Burton Tracy	
+Charles Owen		Darren Smith
+Darren Smith	
+David Farrell	
+David Jones		Janice Joplette
+David Pinker		Jemima Farrell
+Douglas Jones		David Jones
+Erica Crumpet		Tracy Smith
+Florence Bader		Ponder Stibbons
+GUEST GUEST	
+Gerald Butters		Darren Smith
+Henrietta Rumney	Matthew Genting
+Henry Worthington-Smyth	Tracy Smith
+Hyacinth Tupperware	
+Jack Smith		Darren Smith
+Janice Joplette		Darren Smith
+Jemima Farrell	
+Joan Coplin		Timothy Baker
+John Hunt		Millicent Purview
+Matthew Genting		Gerald Butters
+Millicent Purview	Tracy Smith
+Nancy Dare		Janice Joplette
+Ponder Stibbons		Burton Tracy
+Ramnaresh Sarwin	Florence Bader
+Tim Boothe		Tim Rownam
+Tim Rownam	
+Timothy Baker		Jemima Farrell
+Tracy Smith	
+*/
