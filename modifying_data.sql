@@ -21,7 +21,7 @@ facid: 10, Name: 'Squash Court 2', membercost: 3.5, guestcost: 17.5, initialoutl
 */
 INSERT INTO cd.facilities
 VALUES (9, 'Spa', 20, 30, 100000, 800),
-	   (10, 'Squash Court 2', 3.5, 17.5, 5000, 80);
+       (10, 'Squash Court 2', 3.5, 17.5, 5000, 80);
        
        
 
@@ -57,7 +57,7 @@ We want to increase the price of the tennis courts for both members and guests. 
 */
 UPDATE cd.facilities
 SET membercost = 6, 
-	guestcost = 30 -- Insead of [SET membercost = 6 AND guestcost = 30]
+    guestcost = 30 -- Insead of [SET membercost = 6 AND guestcost = 30]
 WHERE name LIKE 'Tennis%';
 
 
@@ -68,8 +68,20 @@ We want to alter the price of the second tennis court so that it costs 10% more 
 */
 UPDATE cd.facilities fac
 SET membercost = (SELECT membercost*1.1 FROM cd.facilities WHERE facid = 0),
-	guestcost = (SELECT guestcost*1.1 FROM cd.facilities WHERE facid = 1)
+    guestcost = (SELECT guestcost*1.1 FROM cd.facilities WHERE facid = 1)
 WHERE fac.facid = 1;
+/*
+facid	name		membercost	guestcost	initialoutlay	monthlymaintenance
+0	Tennis Court 1	5		25		10000		200
+1	Tennis Court 2	5.5		27.5		8000		200
+2	Badminton Court	0		15.5		4000		50
+3	Table Tennis	0		5		320		10
+4	Massage Room 1	35		80		4000		3000
+5	Massage Room 2	35		80		4000		3000
+6	Squash Court	3.5		17.5		5000		80
+7	Snooker Table	0		5		450		15
+8	Pool Table	0		5		400		15
+*/
 
 
 
