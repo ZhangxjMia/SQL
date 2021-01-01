@@ -64,8 +64,8 @@ Find facilities with a total revenue less than 1000.
 Produce a list of facilities with a total revenue less than 1000. Produce an output table consisting of facility name and revenue, sorted by revenue. Remember that there's a different cost for guests and members!
 */
 SELECT name, SUM(slots * CASE WHEN bks.memid = 0 THEN guestcost
-				 			  ELSE membercost
-				 		 END) AS revenue
+			 ELSE membercost
+			 END) AS revenue
 FROM cd.facilities fac
 JOIN cd.bookings bks
 ON fac.facid = bks.facid
@@ -76,22 +76,22 @@ ORDER BY revenue;
 
 -- Method 1:
 SELECT name, SUM(slots * CASE WHEN bks.memid = 0 THEN guestcost
-				 			  ELSE membercost
-				 		 END) AS revenue
+			 ELSE membercost
+			 END) AS revenue
 FROM cd.facilities fac
 JOIN cd.bookings bks
 ON fac.facid = bks.facid
 GROUP BY name
 HAVING SUM(slots * CASE WHEN bks.memid = 0 THEN guestcost
-				 			  ELSE membercost
-				 		 END) < 1000
+		   ELSE membercost
+		   END) < 1000
 ORDER BY revenue;
 ✔️ -- This is correct but looks messy.
 
 -- Method 2:
 WITH sub AS (SELECT name, SUM(slots * CASE WHEN bks.memid = 0 THEN guestcost
-				 			               ELSE membercost
-				 		             END) AS revenue
+				      ELSE membercost
+				      END) AS revenue
              FROM cd.facilities fac
              JOIN cd.bookings bks
              ON fac.facid = bks.facid
@@ -102,7 +102,12 @@ FROM sub
 WHERE revenue < 1000
 ORDER BY revenue;
 ✔️ -- Create a sub-table. This one looks good!
-
+/*
+name		revenue
+Table Tennis	180
+Snooker Table	240
+Pool Table	270
+*/
 
 
 /*
