@@ -260,7 +260,40 @@ Produce a monotonically increasing numbered list of members (including guests), 
 SELECT row_number() OVER(ORDER BY joindate), firstname, surname
 FROM cd.members
 ORDER BY joindate;
-
+/*
+row_number	firstname	surname
+1		GUEST		GUEST
+2		Darren		Smith
+3		Tracy		Smith
+4		Tim		Rownam
+5		Janice		Joplette
+6		Gerald		Butters
+7		Burton		Tracy
+8		Nancy		Dare
+9		Tim		Boothe
+10		Ponder		Stibbons
+11		Charles		Owen
+12		David		Jones
+13		Anne		Baker
+14		Jemima		Farrell
+15		Jack		Smith
+16		Florence	Bader
+17		Timothy		Baker
+18		David		Pinker
+19		Matthew		Genting
+20		Anna		Mackenzie
+21		Joan		Coplin
+22		Ramnaresh	Sarwin
+23		Douglas		Jones
+24		Henrietta	Rumney
+25		David		Farrell
+26		Henry		Worthington-Smyth
+27		Millicent	Purview
+28		Hyacinth	Tupperware
+29		John		Hunt
+30		Erica		Crumpet
+31		Darren		Smith
+*/
 
 
 /*
@@ -275,7 +308,39 @@ JOIN cd.members mbs
 ON bks.memid = mbs.memid
 GROUP BY mbs.memid
 ORDER BY rank, surname, firstname;
-
+/*
+firstname	surname		hours	rank
+GUEST		GUEST		1200	1
+Darren		Smith		340	2
+Tim		Rownam		330	3
+Tim		Boothe		220	4
+Tracy		Smith		220	4
+Gerald		Butters		210	6
+Burton		Tracy		180	7
+Charles		Owen		170	8
+Janice		Joplette	160	9
+Anne		Baker		150	10
+Timothy		Baker		150	10
+David		Jones		150	10
+Nancy		Dare		130	13
+Florence	Bader		120	14
+Anna		Mackenzie	120	14
+Ponder		Stibbons	120	14
+Jack		Smith		110	17
+Jemima		Farrell		90	18
+David		Pinker		80	19
+Ramnaresh	Sarwin		80	19
+Matthew		Genting		70	21
+Joan		Coplin		50	22
+David		Farrell		30	23
+Henry	Worthington-Smyth	30	23
+John		Hunt		20	25
+Douglas		Jones		20	25
+Millicent	Purview		20	25
+Henrietta	Rumney		20	25
+Erica		Crumpet		10	29
+Hyacinth	Tupperware	10	29
+*/
 
 
 /*
@@ -293,7 +358,12 @@ FROM (SELECT fac.name AS name,
 	  GROUP BY fac.name) AS sub
 WHERE rank <= 3
 ORDER BY rank;
-
+/*
+name		rank
+Massage Room 1	1
+Massage Room 2	2
+Tennis Court 2	3
+*/
 
 
 /*
@@ -314,3 +384,15 @@ FROM (SELECT fac.name AS name,
 	  ON bks.facid = fac.facid
 	  GROUP BY fac.name) AS sub
 ORDER BY class, name;
+/*
+name		revenue
+Massage Room 1	high
+Massage Room 2	high
+Tennis Court 2	high
+Badminton Court	average
+Squash Court	average
+Tennis Court 1	average
+Pool Table	low
+Snooker Table	low
+Table Tennis	low
+*/
