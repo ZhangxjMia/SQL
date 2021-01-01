@@ -7,7 +7,36 @@ FROM cd.bookings
 WHERE EXTRACT(year FROM starttime) = 2012
 GROUP BY facid, month
 ORDER BY facid, month;
-
+/*
+facid	month	Total Slots
+0	7	270
+0	8	459
+0	9	591
+1	7	207
+1	8	483
+1	9	588
+2	7	180
+2	8	459
+2	9	570
+3	7	104
+3	8	304
+3	9	422
+4	7	264
+4	8	492
+4	9	648
+5	7	24
+5	8	82
+5	9	122
+6	7	164
+6	8	400
+6	9	540
+7	7	156
+7	8	326
+7	9	426
+8	7	117
+8	8	322
+8	9	471
+*/
 
 
 /*
