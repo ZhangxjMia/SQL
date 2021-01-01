@@ -49,7 +49,14 @@ GROUP BY facid
 HAVING SUM(slots) > 1000
 ORDER BY facid;
 -- WHERE is used to filter what data gets input into the aggregate function, while HAVING is used to filter the data once it is output from the function.
-
+/*
+facid	Total Slots
+0	1320
+1	1278
+2	1209
+4	1404
+6	1104
+*/
 
 
 /*
