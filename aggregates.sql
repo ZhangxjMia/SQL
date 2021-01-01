@@ -217,7 +217,39 @@ ON mbs.memid = bks.memid
 WHERE starttime >= '2012-09-01'
 GROUP BY surname, firstname, mbs.memid
 ORDER BY mbs.memid;
-
+/*
+surname	firstname	memid	starttime
+GUEST	GUEST		0	2012-09-01 08:00:00
+Smith	Darren		1	2012-09-01 09:00:00
+Smith	Tracy		2	2012-09-01 11:30:00
+Rownam	Tim		3	2012-09-01 16:00:00
+JopletteJanice		4	2012-09-01 15:00:00
+Butters	Gerald		5	2012-09-02 12:30:00
+Tracy	Burton		6	2012-09-01 15:00:00
+Dare	Nancy		7	2012-09-01 12:30:00
+Boothe	Tim		8	2012-09-01 08:30:00
+StibbonsPonder		9	2012-09-01 11:00:00
+Owen	Charles		10	2012-09-01 11:00:00
+Jones	David		11	2012-09-01 09:30:00
+Baker	Anne		12	2012-09-01 14:30:00
+Farrell	Jemima		13	2012-09-01 09:30:00
+Smith	Jack		14	2012-09-01 11:00:00
+Bader	Florence	15	2012-09-01 10:30:00
+Baker	Timothy		16	2012-09-01 15:00:00
+Pinker	David		17	2012-09-01 08:30:00
+Genting	Matthew		20	2012-09-01 18:00:00
+MackenzieAnna		21	2012-09-01 08:30:00
+Coplin	Joan		22	2012-09-02 11:30:00
+Sarwin	Ramnaresh	24	2012-09-04 11:00:00
+Jones	Douglas		26	2012-09-08 13:00:00
+Rumney	Henrietta	27	2012-09-16 13:30:00
+Farrell	David		28	2012-09-18 09:00:00
+Worthington-SmythHenry	29	2012-09-19 09:30:00
+Purview	Millicent	30	2012-09-19 11:30:00
+TupperwareHyacinth	33	2012-09-20 08:00:00
+Hunt	John		35	2012-09-23 14:00:00
+Crumpet	Erica		36	2012-09-27 11:30:00
+*/
 
 
 /*
