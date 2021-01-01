@@ -4,7 +4,11 @@ Perform a case-insensitive search to find all facilities whose name begins with 
 */
 SELECT * FROM cd.facilities
 WHERE UPPER(name) LIKE 'TENNIS%';
-
+/*
+facid	name	          membercost	guestcost	initialoutlay	monthlymaintenance
+0	    Tennis Court 1	5	          25	      10000	        200
+1	    Tennis Court 2	5	          25	      8000	        200
+*/
 
 
 /*
