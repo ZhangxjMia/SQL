@@ -16,7 +16,7 @@ INNER JOIN cd.members mbs
 ON recs.recommender = mbs.memid
 ORDER BY memid DESC;
 /*
-recommender	firstname	surname
+recommender	firstname   surname
 20	        Matthew	    Genting
 5	        Gerald	    Butters
 1	        Darren	    Smith
@@ -50,15 +50,15 @@ INNER JOIN cd.members mbs
 ON recs.memid = mbs.memid
 ORDER BY memid;
 /*
-memid	firstname	surname
+memid	      firstname	surname
 4	      Janice	Joplette
 5	      Gerald	Butters
-7	      Nancy	    Dare
+7	      Nancy	Dare
 10	      Charles	Owen
-11	      David	    Jones
-14	      Jack	    Smith
+11	      David	Jones
+14	      Jack	Smith
 20	      Matthew	Genting
-21	      Anna	    Mackenzie
+21	      Anna	Mackenzie
 26	      Douglas	Jones
 27	      Henrietta	Rumney
 */
