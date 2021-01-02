@@ -70,7 +70,7 @@ UPDATE cd.facilities fac
 SET membercost = (SELECT membercost*1.1 FROM cd.facilities WHERE facid = 0),
     guestcost = (SELECT guestcost*1.1 FROM cd.facilities WHERE facid = 1)
 WHERE fac.facid = 1;
-
+/*
 |facid|     name	 | membercost |  guestcost |  initialoutlay |	monthlymaintenance
 |0    |Tennis Court 1 |	5	|	25    |	10000    |	200
 |1    |Tennis Court 2 |	5.5	|	27.5  |	8000     |	200
@@ -81,7 +81,7 @@ WHERE fac.facid = 1;
 |6    |Squash Court	 |     3.5	|	17.5  |	5000	  |	80
 |7    |Snooker Table	 |     0	|	5     |	45       |	15
 |8    |Pool Table	 |     0	|	5     |	400	  |	15
-
+*/
 
 
 
