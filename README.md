@@ -22,3 +22,20 @@
 * Date
 * String
 * Recursive
+
+#### Code Example
+```SQL
+SELECT name, CASE WHEN class = 1 THEN 'high'
+		  WHEN class = 2 THEN 'average'
+		  ELSE 'low'
+	     END revenue
+FROM (SELECT fac.name AS name, 
+      NTILE(3) OVER(ORDER BY SUM(CASE WHEN memid = 0 THEN slots * fac.guestcost
+				      ELSE slots * membercost
+				 END) DESC) AS class
+      FROM cd.bookings bks
+      JOIN cd.facilities fac
+      ON bks.facid = fac.facid
+      GROUP BY fac.name) AS sub
+ORDER BY class, name;
+```
