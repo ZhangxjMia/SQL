@@ -123,8 +123,8 @@ LIMIT 1;
 
 -- Without LIMIT, use CTE
 WITH sub AS (SELECT facid, SUM(slots) AS totalslots
-			 FROM cd.bookings
-			 GROUP BY facid)
+	     FROM cd.bookings
+	     GROUP BY facid)
 
 SELECT facid, totalslots
 FROM sub
@@ -349,13 +349,13 @@ Produce a list of the top three revenue generating facilities (including ties). 
 */
 SELECT name, rank
 FROM (SELECT fac.name AS name, 
-	  		 RANK() OVER(order by SUM(CASE WHEN memid = 0 THEN slots * fac.guestcost
-									  ELSE slots * membercost
-									  END) DESC) AS rank
-	  FROM cd.bookings bks
-	  JOIN cd.facilities fac
-	  ON bks.facid = fac.facid
-	  GROUP BY fac.name) AS sub
+      RANK() OVER(order by SUM(CASE WHEN memid = 0 THEN slots * fac.guestcost
+			       ELSE slots * membercost
+			       END) DESC) AS rank
+      FROM cd.bookings bks
+      JOIN cd.facilities fac
+      ON bks.facid = fac.facid
+      GROUP BY fac.name) AS sub
 WHERE rank <= 3
 ORDER BY rank;
 /*
@@ -372,17 +372,17 @@ Classify facilities into equally sized groups of high, average, and low based on
 */
 -- NTILE window function. NTILE groups values into a passed-in number of groups, as evenly as possible.
 SELECT name, CASE WHEN class = 1 THEN 'high'
-			      WHEN class = 2 THEN 'average'
-			      ELSE 'low'
-			 END revenue
+		  WHEN class = 2 THEN 'average'
+		  ELSE 'low'
+	     END revenue
 FROM (SELECT fac.name AS name, 
-			 NTILE(3) OVER(ORDER BY SUM(CASE WHEN memid = 0 THEN slots * fac.guestcost
-											 ELSE slots * membercost
-											 END) DESC) AS class
-	  FROM cd.bookings bks
-	  JOIN cd.facilities fac
-	  ON bks.facid = fac.facid
-	  GROUP BY fac.name) AS sub
+      NTILE(3) OVER(ORDER BY SUM(CASE WHEN memid = 0 THEN slots * fac.guestcost
+				      ELSE slots * membercost
+				 END) DESC) AS class
+      FROM cd.bookings bks
+      JOIN cd.facilities fac
+      ON bks.facid = fac.facid
+      GROUP BY fac.name) AS sub
 ORDER BY class, name;
 /*
 name		revenue
