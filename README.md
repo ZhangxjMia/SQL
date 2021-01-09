@@ -8,6 +8,15 @@
 3. Conditional Expressions & Procedures Introduction
 4. Creating Databases & Tables
 
+#### Code Example
+```SQL
+SELECT AVG(grade) FROM test_scores
+SELECT student, grade
+FROM test_scores
+WHERE grade > (SELECT AVG (grade)
+		    FROM test_scores)
+```
+
 ## PostgreSQL-Exercises
 > [PostgreSQL Exercises](https://pgexercises.com/) was made by [Alisdair Owens](https://www.zaltys.net/). I really love this site since it offers chances to practice SQL. I selected questions that I need to focus on.
 
