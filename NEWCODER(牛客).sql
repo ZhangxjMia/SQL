@@ -30,3 +30,20 @@ SELECT s.emp_no, s.salary
 FROM salaries s
 WHERE s.from_date = (SELECT e.hire_date FROM employees e WHERE e.emp_no = s.emp_no) 
 ORDER BY s.emp_no DESC;
+
+
+/*
+film (film_id, title, description)
+category (category_id, name, last_update)
+film_category (film_id, category_id, last_update)
+
+using subquery to find all the action movies' title and descrption.
+*/
+SELECT f.title, f.description
+FROM film f
+WHERE f.film_id IN (SELECT fc.film_id FROM film_category fc JOIN
+                    category c ON fc.category_id = c.category_id
+                    WHERE c.name = 'Action')
+/*
+Notice: here is IN instead of =, in this case, the subquery returns only one result.
+*/
