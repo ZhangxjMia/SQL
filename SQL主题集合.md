@@ -1,6 +1,6 @@
 ### nth Highest Salary
 
-<img src="/Users/xiaojiazhang/Library/Application Support/typora-user-images/Screen Shot 2021-02-09 at 4.50.32 PM.png" alt="Screen Shot 2021-02-09 at 4.50.32 PM" style="zoom: 50%;" />
+<img src="/Users/xiaojiazhang/Library/Application Support/typora-user-images/Screen Shot 2021-02-09 at 4.50.32 PM.png" alt="Screen Shot 2021-02-09 at 4.50.32 PM" style="zoom: 60%;" />
 
 * 方法一：窗口函数 DENSE_RANK()
 
@@ -320,4 +320,33 @@ HAVING SUM(price) >= ALL (
 | ---- | ----- | ---- | ---------- |
 | 1    | Nancy | 1    | Accounting |
 | 3    | Cathy | 3    | Banking    |
+
+
+
+### DATE集合
+
+<img src="/Users/xiaojiazhang/Library/Application Support/typora-user-images/Screen Shot 2021-02-20 at 10.42.45 PM.png" alt="Screen Shot 2021-02-20 at 10.42.45 PM" style="zoom:60%;" />
+
+* DATEDIFF
+
+> 要注意的是datediff < 30，而并非<=30
+
+```sql
+SELECT activity_date AS day, COUNT(DISTINCT user_id) AS active_users
+FROM Activity
+WHERE DATEDIFF('2019-07-27', activity_date) < 30
+GROUP BY activity_date;
+```
+
+* DATE_SUB('2019-07-27', INTERVAL 30 DAY)
+
+> date_sub不需要注意等于30的问题
+
+```sql
+SELECT activity_date AS day, COUNT(DISTINCT user_id) AS active_users
+FROM activity
+WHERE activity_date > DATE_SUB('2019-07-27', INTERVAL 30 DAY)
+AND activity_date <= '2019-07-27'
+GROUP BY activity_date;
+```
 
